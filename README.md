@@ -4,7 +4,7 @@ Friendly key logger for yourself.
 
 ## Overview
 
-ErgoTapCraft is an application designed for enthusiasts of programmable/ergonomic mechanical keyboards. It helps to collect and analyze your personal keystrokes date to assist in creation of customized keyboard layouts tailored for you, that optimize comfort and efficiency.
+ErgoTapCraft is an application designed for enthusiasts of programmable/ergonomic mechanical keyboards. It helps to collect and analyze your personal keystrokes data to assist in creation of customized keyboard layouts tailored for you, that optimize comfort and efficiency.
 
 ## Features
 
@@ -40,7 +40,7 @@ To get started with ErgoTapCraft:
 1. **Install the Application** From Release or build it yourself with `dotnet publish`.
 2. **Run**: `ErgoTapCraft >>mykeys.log`
 3. **Start Typing**: Just use your keyboard as you normally would and collect enough data to analyze.
-4. **Analyze** Use provided .nu scripts (require `NuShell`), or write your own.
+4. **Analyze** Use provided .nu scripts (requires [NuShell](https://www.nushell.sh/), or write your own.
 5. **Customize your keyboard layout**: Use the insights provided to craft your perfect keyboard layout.
 6. **Repeat**: as you keep running ErgoTapCraft and collect more and more data you get additional insights.
 

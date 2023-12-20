@@ -19,7 +19,7 @@ enum VirtKey : ushort
     // 0x07 reserved
     BACK = 0x08,
     TAB = 0x09,
-    // 0x0A-0X0B reserved 
+    // 0x0A-0X0B reserved
     CLEAR = 0x0C,
     RETURN = 0x0D,
     // 0x0E-0X0F unassigned
@@ -205,14 +205,14 @@ enum VirtKey : ushort
     OEM_6 = 0xDD,
     OEM_7 = 0xDE,
     OEM_8 = 0xDF,
-    // 0xE0 Reserved  
+    // 0xE0 Reserved
     // 0xE1 OEM specific
     OEM_102 = 0xE2,
 
     // 0xE3-0xE4 OEM specific
 
     PROCESSKEY = 0xE5,
-    // 0xE6 OEM specific 
+    // 0xE6 OEM specific
     PACKET = 0xE7,
 
     // 0xE8 Unassigned
@@ -233,8 +233,8 @@ enum VirtKey : ushort
 static class VirtKeyMethods
 {
     public static bool IsExtended(this VirtKey vk) => (vk & IS_EXTENDED) != 0;
-    public static VirtKey GetBaseVKCode(this VirtKey vk) => vk & BASE_VK_MASK;
 
+    public static VirtKey GetBaseVKCode(this VirtKey vk) => vk & BASE_VK_MASK;
 
     public static bool IsModifier(this VirtKey vk) => modifiers.Contains(vk.GetBaseVKCode());
 
