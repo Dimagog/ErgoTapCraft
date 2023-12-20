@@ -92,6 +92,10 @@ Options:
 > [!IMPORTANT]
 > [Install NuShell first](https://www.nushell.sh/book/installation.html)
 
+> [!TIP]
+> You don't have to stop data collection (exit `ErgoTapCraft.exe`) to run the queries below.
+> Just keep it running.
+
 ### Which keys am I pressing most often (by themselves or as part of combos)?
 
 These keys are good candidates for premium locations like base layer and thumb cluster.
