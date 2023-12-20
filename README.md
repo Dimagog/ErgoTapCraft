@@ -41,7 +41,7 @@ ErgoTapCraft helps you design a keyboard that fits your hands and habits perfect
 
 To get started with ErgoTapCraft:
 
-1. **Install the Application** From Release or build it yourself with `dotnet publish`.
+1. **Install the Application** from [Releases](https://github.com/Dimagog/ErgoTapCraft/releases) or build it yourself with `dotnet publish`.
 2. **Run**: `ErgoTapCraft >>mykeys.log`
 3. **Start Typing**: Just use your keyboard as you normally would and collect enough data to analyze.
 4. **Analyze** Use provided .nu scripts (requires [NuShell](https://www.nushell.sh/)), or write your own.
