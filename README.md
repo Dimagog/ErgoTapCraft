@@ -159,7 +159,7 @@ nu -c "use Stats.nu; Stats --trsh mykeys.log | where key =~ ' \+ '"
 These are also good candidates for tap dances, plus the keys themselves can be demoted from premium locations.
 
 After running command below, you can look these keys up in table above to see which combos
-contain these keys.
+contain these keys, or see the next section.
 
 ```nushell
 nu MostlyCombos.nu E:\KMonad\mykeys.log
@@ -177,6 +177,22 @@ nu MostlyCombos.nu E:\KMonad\mykeys.log
 │  5 │ Del       │        850 │        575 │        275 │    32.35 │
 │  6 │ Tab       │        740 │        518 │        222 │       30 │
 ...
+```
+
+### How am I using a particular key?
+
+Here is an example for `Ins` key:
+```nushell
+nu -c "use Stats.nu; Stats mykeys.log | where key =~ '\bIns'"
+```
+```text
+╭───┬─────────────┬───────┬──────────┬────────────┬───────────╮
+│ # │     key     │ count │ quantile │ percentage │ frequency │
+├───┼─────────────┼───────┼──────────┼────────────┼───────────┤
+│ 0 │ Shift + Ins │    93 │     0.00 │ 0.39%      │           │
+│ 1 │ Ctrl + Ins  │    46 │     0.00 │ 0.20%      │           │
+│ 2 │ Ins         │    20 │     0.00 │ 0.08%      │           │
+╰───┴─────────────┴───────┴──────────┴────────────┴───────────╯
 ```
 
 ## License
