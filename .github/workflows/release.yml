@@ -1,0 +1,58 @@
+name: release
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - v[0-9]+*
+
+env:
+  DOTNETVERSION: "8.x"
+  APP: "ErgoTapCraft"
+  BUILDOUTPUTPATH: "./publish/net8.0-win-x64"
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Setup .NET Core SDK ${{ env.DOTNETVERSION }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNETVERSION }}
+
+      - name: Get version
+        id: version
+        shell: bash
+        run: echo "version-without-v=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Get previous release tag
+        id: previousTag
+        shell: bash
+        run: |
+          PREV_REV=$(git rev-list --tags --max-count=1 --skip=1 --no-walk)
+          PREV_TAG=$(git describe --tags ${PREV_REV})
+          echo "tag=${PREV_TAG}" >> $GITHUB_OUTPUT
+
+      - name: Build
+        run: dotnet publish /p:PublishProfile=Properties\PublishProfiles\FolderProfile.pubxml
+
+      - name: Upload app build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.APP }}-${{ steps.version.outputs.version-without-v }}.zip
+          path: ${{ env.BUILDOUTPUTPATH }}
+
+      - name: GitHub release
+        id: release
+        # run: gh release create ${{ github.ref }} "${{ env.BUILDOUTPUTPATH }}/${{ env.APP }}-${{ steps.version.outputs.version-without-v }}.zip" -t "${{ steps.version.outputs.version-without-v }}" --generate-notes --notes-start-tag ${{ steps.previousTag.outputs.tag }}
+        run: gh release create ${{ github.ref }} "${{ env.BUILDOUTPUTPATH }}/${{ env.APP }}.exe" -t "${{ steps.version.outputs.version-without-v }}" --generate-notes --notes-start-tag ${{ steps.previousTag.outputs.tag }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
