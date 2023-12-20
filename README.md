@@ -201,4 +201,4 @@ MIT
 
 ## Disclaimer
 
-All pompous sections are written by ChatGPT.
+All pompous readme sections are written by ChatGPT.
