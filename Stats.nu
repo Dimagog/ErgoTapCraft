@@ -120,11 +120,9 @@ export def main [
     | insert comboPer {|it| $it.comboCount * 100 / $it.totalCount }
     )
   } else if $bg {
-    return ($raw
-    | filter { $in != Space }
-    | wrap key1
+    let raw = $raw | filter { $in != Space }
+    return  ($raw | drop 1 | wrap key1
     | merge ($raw | skip 1 | wrap key2)
-    | drop 1
     | where $it.key1 != $it.key2 and (($it.key1 | str length) == 1) and (($it.key2 | str length) == 1) and $it.key1 !~ '[0-9]' and $it.key2 !~ '[0-9]'
     | insert combo {|row| $row.key1 + $row.key2 }
     | histogram combo
